@@ -18,22 +18,18 @@ def start():
                                                           ['geo','OBS_VALUE'])
         # cleanse GDP data
         df_GDP = DataManagement.cleanseGDP(df_survey_results)
+        # insert to mysql
         DataManagement.insertTable(df_GDP, 'gdp_europe')
-
+        # retrieve data from mysql
         df_GDP_and_age = DataManagement.getGDP_and_age()
+        # plot data
         DataManagement.plot(df_GDP_and_age)
 
     except Exception as er:
         print("An exception occurred" + er)
 
 
-    # load gdp data
-    # process survey data
-    # insert to mysql
-    # retrieve data
-    # plot data
 
-# Press the green button in the gutter to run the script.
 if __name__ == '__main__':
     start()
 
